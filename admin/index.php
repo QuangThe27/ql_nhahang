@@ -176,11 +176,177 @@ if (isset($_GET['act']) ? $_GET['act'] : '') {
             break;
         // Danh mục tài khoản
         case 'dmtk':
+            $list_dmtk = loadall_dmtk();
+            include "../admin/danhmuc_tk/list_dmtk.php";
+            break;
+        case 'them_dmtk':
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+               $ten_dmtk = $_POST['ten_dmtk'];
 
+               if (!check_ten_dmtk($ten_dmtk)) {
+                insert_dmtk($ten_dmtk);
+                $thongbao = 'Thêm thành công!';
+               } else {
+                $thongbao = 'Thêm thất bại. Loại tài khoản đã tồn tại!';
+               }
+               echo '<script>
+                        setTimeout(function(){
+                            alert("'.$thongbao.'");
+                        }, 300);
+                    </script>';
+            }
+            $list_dmtk = loadall_dmtk();
+            include "../admin/danhmuc_tk/add_dmtk.php";
+            break;
+        case 'sua_dmtk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $dmtk = loadone_dmtk($_GET['id']);
+            }
+            $list_dmtk = loadall_sp();
+            include "../admin/danhmuc_tk/edit_dmtk.php";
+            break;
+        case 'update_dmtk':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'] > 0)) {
+                $id_dmtk = $_POST['id_dmtk'];
+                $ten_dmtk = $_POST['ten_dmtk'];
+
+                if (!check_ten_dmtk($ten_dmtk)) {
+                    update_dmtk($id_dmtk, $ten_dmtk);
+                    $thongbao = "Cập nhật loại tài khoản thành công!";
+                    echo '<script>
+                    setTimeout(function(){
+                        alert("'.$thongbao.'");
+                        window.location.href = "index.php?act=dmtk";
+                    }, 300);
+                    </script>';
+                } else {
+                    $thongbao = "Loại tài khoản đã tồn tại!";
+                    echo '<script>
+                    setTimeout(function(){
+                        alert("'.$thongbao.'");
+                        window.location.href = "index.php?act=dmtk";
+                    }, 300);
+                    </script>';
+                }
+            }
+            break;
+        case 'xoa_dmtk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id_dmtk = $_GET['id'];
+                delete_dmtk($id_dmtk);
+            }
+            $list_dmtk = loadall_dmtk();
             include "../admin/danhmuc_tk/list_dmtk.php";
             break;
         // Tài khoản
         case 'qltk':
+            $list_dmtk = loadall_dmtk();
+            $list_tk = loadall_tk();
+            include "../admin/taikhoan/list_tk.php";
+            break;
+        case 'them_tk':
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $iddm_tk = $_POST['id_dmtk'];
+                $username_tk = $_POST['username_tk'];
+                $matkhau_tk = $_POST['matkhau_tk'];
+                $email_tk = $_POST['email_tk'];
+                $hoten_tk = $_POST['hoten_tk'];
+                $sdt_tk = $_POST['sdt_tk'];
+                $diachi_tk = $_POST['diachi_tk'];
+
+                if (!check_username_tk($username_tk)) {
+                    if (!check_email_tk($email_tk)) {
+                        insert_tk($username_tk, $matkhau_tk, $email_tk, $hoten_tk, $sdt_tk, $diachi_tk, $iddm_tk);
+                        $thongbao = "Thêm tài khoản thành công!";
+                        echo '<script>
+                        setTimeout(function(){
+                            alert("'.$thongbao.'");
+                            window.location.href = "index.php?act=qltk";
+                        }, 300);
+                        </script>';
+                    } else {
+                        $thongbao_lost = "Email đã tồn tại!";
+                        echo '<script>
+                        setTimeout(function(){
+                            alert("'.$thongbao_lost.'");
+                            window.location.href = "index.php?act=them_tk";
+                        }, 300);
+                        </script>';
+                    }
+                } else {
+                    $thongbao_lost = "Tài khoản đã tồn tại!";
+                    echo '<script>
+                    setTimeout(function(){
+                        alert("'.$thongbao_lost.'");
+                        window.location.href = "index.php?act=them_tk";
+                    }, 300);
+                    </script>';
+                }
+            }
+            $list_dmtk = loadall_dmtk();
+            include "../admin/taikhoan/add_tk.php";
+            break;
+        case 'xoa_tk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id_tk = $_GET['id'];
+                delete_tk($id_tk);
+            }
+            $list_tk = loadall_tk();
+            include "../admin/taikhoan/list_tk.php";
+            break;
+        case 'sua_tk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $tk = loadone_tk($_GET['id']);
+            }
+            $list_dmtk = loadall_dmtk();
+            include "../admin/taikhoan/edit_tk.php";
+            break;
+        case 'capnhat_tk':
+            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+                $iddm_tk = $_POST['iddm_tk'];
+                $id_tk = $_POST['id_tk'];
+                $username_tk = $_POST['username_tk'];
+                $matkhau_tk = $_POST['matkhau_tk'];
+                $email_tk = $_POST['email_tk'];
+                $hoten_tk = $_POST['hoten_tk'];
+                $sdt_tk = $_POST['sdt_tk'];
+                $diachi_tk = $_POST['diachi_tk'];
+        
+                $tk = [
+                    'iddmTk' => $iddm_tk,
+                    'id' => $id_tk,
+                    'taiKhoan' => $username_tk,
+                    'matKhau' => $matkhau_tk,
+                    'email' => $email_tk,
+                    'hoTen' => $hoten_tk,
+                    'sdt' => $sdt_tk,
+                    'diaChi' => $diachi_tk,
+                ];
+        
+                $error = "";
+                if (!check_email_capnhat($id_tk, $email_tk)) {
+                    update_tk($id_tk, $matkhau_tk, $email_tk, $hoten_tk, $sdt_tk, $diachi_tk, $iddm_tk);
+                    $thongbao = "Cập nhật tài khoản thành công!";
+                    echo '<script>
+                    setTimeout(function(){
+                        alert("'.$thongbao.'");
+                        window.location.href = "index.php?act=qltk";
+                    }, 300);
+                    </script>';
+                    exit; 
+                } else {
+                    $error = "Email đã tồn tại!";
+                }
+            }
+            $list_dmtk = loadall_dmtk();
+            include "../admin/taikhoan/edit_tk.php";
+            break;
+        case 'list_tk_dmtk':
+            if(isset($_POST['id_dmtk'])) {
+                $id_dmtk = $_POST['id_dmtk'];
+                $list_tk = loadall_tk_by_dmtk($id_dmtk);
+            }
+            $list_dmtk = loadall_dmtk();
             include "../admin/taikhoan/list_tk.php";
             break;
         // Hóa đơn

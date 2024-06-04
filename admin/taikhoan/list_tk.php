@@ -1,6 +1,22 @@
 <div class="col-10 admin-boxright" style="min-height: 100vh;">
-                <div class="admin-boxright-heading">
-
+                <div class="admin-boxright-heading pt-3">
+                    <div class="">
+                      <a href="index.php?act=them_tk">
+                        <button type="button" class="btn btn-success">Thêm tài khoản</button>
+                      </a>
+                    </div>
+                    <form action="index.php?act=list_tk_dmtk" method="post" class="pt-3">
+                      <input type="hidden" name="act" value="list_tk_dmtk">
+                      <select class="form-select" name="id_dmtk" style="max-width: 140px;" onchange="this.form.submit()">
+                          <option value="">Loại tài khoản</option>
+                          <?php
+                              foreach ($list_dmtk as $dmtk) {
+                                  extract($dmtk);
+                                  echo '<option value="'.$id.'">'.$ten.'</option>';
+                              }
+                          ?>    
+                      </select>
+                    </form>
                 </div>
                 <div class="admin-boxright-body pt-4">
                     <table class="table table-bordered">
@@ -16,21 +32,30 @@
                             <th>Chức năng</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>admin</td>
-                            <td>123456</td>
-                            <td>nguyenthequangdev@gmail.com</td>
-                            <td>Nguyễn Thế Quang</td>
-                            <td>0971625535</td>
-                            <td>Từ Sơn - Bắc Ninh</td>
-                            <td>
-                                <button type="button" class="btn btn-success">Sửa</button>
-                                <button type="button" class="btn btn-success">Xóa</button>
-                            </td>
-                          </tr>
-                        </tbody>
+                        <?php
+                          foreach ($list_tk as $tk) {
+                            extract($tk);
+
+                            $sua_tk = "index.php?act=sua_tk&id=".$id;
+                            $xoa_tk = "index.php?act=xoa_tk&id=".$id;
+
+                            echo '<tbody>
+                              <tr>
+                                <td>'.$id.'</td>
+                                <td>'.$taiKhoan.'</td>
+                                <td>'.str_repeat("*", strlen($matKhau)).'</td>
+                                <td>'.$email.'</td>
+                                <td>'.$hoTen.'</td>
+                                <td>0'.$sdt.'</td>
+                                <td>'.$diaChi.'</td>
+                                <td>
+                                  <a href="'.$sua_tk.'"><button type="button" class="btn btn-success">Sửa</button></a>
+                                  <a href="'.$xoa_tk.'"><button type="button" class="btn btn-success">Xóa</button></a>
+                                </td>
+                              </tr>
+                            </tbody>';
+                          }
+                        ?>
                       </table>
                 </div>
             </div>

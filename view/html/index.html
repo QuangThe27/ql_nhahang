@@ -5,73 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>Quản lý nhà hàng</title>
+    <link rel="stylesheet" href="../fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+    <script src="../js/bootstrap.min.js"></script>
+    <title>Fance Water</title>
 </head>
 <body>
-    <div class="container-full">
-        <div class="row" style="max-width: 100%;">
-            <div class="col-2 admin-boxleft" style="min-height: 100vh;">
-                <div class="admin-boxleft-heading">
-                    <span>Nguyễn Thế Quang</span>
-                    <a href="#">Thoát</a>
-                </div>
-                <div class="admin-boxleft-body">
-                    <ul class="nav flex-column">
+    <div id="main">
+        <header id="header">
+            <div class="d-flex justify-content-between  mb-3">
+                <div class="p-2">
+                    <ul class="nav header-ul">
                         <li class="nav-item">
-                          <a class="nav-link" href="#">danh mục sản phẩm</a>
+                          <a class="nav-link text-dark" href="#">Logo</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">danh mục tài khoản</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">quản lý sản phẩm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">quản lý tài khoản</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">quản lý hóa đơn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">quản lý nhân viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">quản lý hóa đơn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">quản lý doanh thu</a>
+                          <a class="nav-link text-dark" href="#">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="col-10 admin-boxright" style="min-height: 100vh;">
-                <div class="admin-boxright-heading">
-
+                <div class="p-2">
+                    <!-- <ul class="nav header-ul">
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="#">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="#">Đăng ký</a>
+                        </li>
+                    </ul> -->
+                    <div class="header-info">
+                        <i class="fa-solid fa-bars"></i>
+                        <div class="header-info-chlid">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Nguyễn Thế Quang</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Giỏ hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Đơn hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Cài đặt</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="admin-boxright-body pt-4">
-                    <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th>Mã danh mục</th>
-                            <th>Tên danh mục</th>
-                            <th>Chức năng</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Đồ uống</td>
-                            <td>
-                                <button type="button" class="btn btn-success">Sửa</button>
-                                <button type="button" class="btn btn-success">Xóa</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+            </div>
+        </header>
+        
+        <div class="container-full">
+            <div class="row">
+                <div class="col-3">
+                    <div class="container__left">
+                        <form class="container__left-headeing" action="/action_page.php">
+                            <label for="search" class="form-label">Tìm kiếm sản phẩm:</label>
+                            <div class="d-flex">
+                                <input class="form-control me-2" type="text" placeholder="Search" id="search">
+                                <button class="btn" type="button">Search</button>
+                            </div>
+                        </form>
+
+                        <div class="container__left-body pt-3">
+                            <label for="" class="form-label">Danh mục sản phẩm:</label>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Bánh ngọt</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Cafe</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Nước ép hoa quả</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Trà sữa</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>             
+                </div>
+
+                <div class="col-9 container__rgiht">
+                    <div class="container__rgiht-heading">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Giá tăng
+                                    <i class="fa-solid fa-caret-up"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Giá giảm
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Sale</a>
+                            </li>
+                          </ul>
+                    </div>
+                    <div class="container__rgiht-body pt-3">
+                        <div class="row">
+                            <div class="col-3 pb-3">
+                                <div class="card container__rgiht-card">
+                                    <a href="#">
+                                        <img class="card-img-top" src="https://cdn.tgdd.vn/Files/2018/11/27/1134029/cong-dung-cua-nuoc-cam-tuoi-va-cach-bao-quan-nuoc-cam-tot-nhat-6.jpg" alt="Card image">
+                                    </a>
+                                    <div class="card-body">
+                                      <h5 class="card-title">Nước cam</h5>
+                                      <p class="card-text">35000 VND</p>
+                                      <a href="#" class="btn btn-primary">Đặt hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    
+        <footer id="footer">
+    
+        </footer>
     </div>
 </body>
 </html>

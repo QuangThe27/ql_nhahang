@@ -89,4 +89,11 @@ function update_tk($id_tk, $matkhau_tk, $email_tk, $hoten_tk, $sdt_tk, $diachi_t
     pdo_execute($sql);
 }
 /* Kết thúc: Danh sách tài khoản */
+
+/* Bắt đầu: Tài khoản trang người dùng */
+function checkuser($user,$pw) {
+    $sql = "SELECT * FROM taikhoan WHERE taiKhoan='".$user."' AND matKhau='".$pw."'";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
 ?>

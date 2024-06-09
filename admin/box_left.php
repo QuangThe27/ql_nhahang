@@ -34,9 +34,6 @@
                             <a class="nav-link" href="index.php?act=qlhd">quản lý hóa đơn</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?act=qlnv">quản lý nhân viên</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="index.php?act=qldt">quản lý doanh thu</a>
                         </li>
                     </ul>

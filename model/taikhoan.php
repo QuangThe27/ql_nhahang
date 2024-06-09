@@ -96,4 +96,25 @@ function checkuser($user,$pw) {
     $sp = pdo_query_one($sql);
     return $sp;
 }
+
+function checkuser_email($user, $email) {
+    $sql = "SELECT * FROM taikhoan WHERE taiKhoan='".$user."' AND email='".$email."'";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
+
+function generateRandomPassword() {
+    $characters = '0123456789';
+    $password = '';
+    for ($i = 0; $i < 6; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $password .= $characters[$index];
+    }
+    return $password;
+}
+
+function updatePassword($user, $new_password) {
+    $sql = "UPDATE taikhoan SET matKhau = :new_password WHERE taiKhoan = :user";
+    pdo_execute($sql, [':new_password' => $new_password, ':user' => $user]);
+}
 ?>

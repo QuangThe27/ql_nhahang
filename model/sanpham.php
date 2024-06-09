@@ -82,5 +82,22 @@ function update_sp($id_sp, $ten_sp, $giatien_sp, $hinhanh_sp, $soluong_sp, $mota
     }
     pdo_execute($sql);
 }
+
+// Tìm kiếm theo tên
+function search_sp_by_name($keyword) {
+    $sql = "SELECT * FROM sanpham WHERE tenSp LIKE ?";
+    return pdo_query($sql, ['%'.$keyword.'%']);
+}
+
+// Lấy sản phẩm theo giá tiền (tăng - giảm)
+function loadall_sp_sorted($order) {
+    $sql = "SELECT * FROM sanpham ORDER BY giaTien " . ($order === 'asc' ? 'ASC' : 'DESC');
+    return pdo_query($sql);
+}
+
+function update_soluong_sp($id_sp, $so_luong_mua) {
+    $sql = "UPDATE sanpham SET soLuong = soLuong - :so_luong_mua WHERE id = :id_sp";
+    pdo_execute($sql, [':so_luong_mua' => $so_luong_mua, ':id_sp' => $id_sp]);
+}
 /* Kết thúc - Hàm sản phẩm */
 ?>

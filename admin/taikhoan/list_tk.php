@@ -29,7 +29,7 @@
                             <th>Họ tên</th>
                             <th>Tel</th>
                             <th>Địa chỉ</th>
-                            <th>Chức năng</th>
+                            <th style="width: 17%;">Chức năng</th>
                           </tr>
                         </thead>
                         <?php
@@ -41,14 +41,14 @@
 
                             echo '<tbody>
                               <tr>
-                                <td>'.$id.'</td>
+                                <td ">'.$id.'</td>
                                 <td>'.$taiKhoan.'</td>
                                 <td>'.str_repeat("*", strlen($matKhau)).'</td>
                                 <td>'.$email.'</td>
                                 <td>'.$hoTen.'</td>
                                 <td>0'.$sdt.'</td>
                                 <td>'.$diaChi.'</td>
-                                <td>
+                                <td style="width: 17%;">
                                   <a href="'.$sua_tk.'"><button type="button" class="btn btn-success">Sửa</button></a>
                                   <a href="'.$xoa_tk.'"><button type="button" class="btn btn-success">Xóa</button></a>
                                 </td>

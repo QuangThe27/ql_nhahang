@@ -1,8 +1,10 @@
 <?php
-include "../model/pdo.php";
-include "../model/sanpham.php";
-include "../model/taikhoan.php";
-include "./box_left.php";
+require_once "../model/pdo.php";
+require_once "../model/sanpham.php";
+require_once "../model/taikhoan.php";
+require_once "../model/bill.php";
+require_once "../model/cart.php";
+require_once "../admin/box_left.php";
 
 if (isset($_GET['act']) ? $_GET['act'] : '') {
     $act=$_GET['act'];
@@ -351,11 +353,34 @@ if (isset($_GET['act']) ? $_GET['act'] : '') {
             break;
         // Hóa đơn
         case 'qlhd':
-            include "";
+            $list_bill = loadall_bill();
+            include "../admin/hoadon/list_hoadon.php";
+            break;
+        case 'edit_bill':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $bill = loadone_bill($_GET['id']);
+            }
+            include "../admin/hoadon/edit_hoadon.php";
+            break;
+        case 'capnhat_bill':
+            if (isset($_POST['capnhat'])) {
+                $id = $_POST['id'];
+                $status = $_POST['status'];
+
+                update_bill($id, $status);
+
+                $thongbao = "Cập nhật thành công!";
+                echo '<script>
+                setTimeout(function(){
+                    alert("'.$thongbao.'");
+                    window.location.href = "index.php?act=qlhd";
+                }, 300);
+                </script>';
+                exit; 
+            }
             break;
         // Nhân viên
         case 'qlnv':
-            include "";
             break;            
 
         default:

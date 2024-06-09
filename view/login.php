@@ -15,14 +15,14 @@
                                 <input type="password" class="form-control" id="matkhau_tk" placeholder="Nhập mật khẩu" name="matkhau">
                             </div>
                             <div class="mb-3" style="display: flex; justify-content: flex-end;">
-                                <a href="">Quên mật khẩu?</a>
+                                <a href="index.php?act=quenpw">Quên mật khẩu?</a>
                             </div>
 
                             <center>
                             <input type="submit" class="input_primary" name="dangnhap" value="Đăng nhập">
 
                             <div class="mb-3 pt-5">
-                                <p style="font-size: 14px;">Bạn chưa có tài khoản? <a href="">Đăng ký</a></p>
+                                <p style="font-size: 14px;">Bạn chưa có tài khoản? <a href="index.php?act=dangky">Đăng ký</a></p>
                             </div>
                             </center>
                         </form>

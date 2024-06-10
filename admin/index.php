@@ -379,10 +379,28 @@ if (isset($_GET['act']) ? $_GET['act'] : '') {
                 exit; 
             }
             break;
-        // Nhân viên
-        case 'qlnv':
-            break;            
-
+        case 'search_hd':
+            if (isset($_POST['search']) && !empty($_POST['search'])) {
+                $keyword = $_POST['search'];
+                $list_bill = search_bill($keyword);
+            } else {
+                $list_bill = loadall_sp();
+            }
+            include './hoadon/list_hoadon.php';
+            break;
+        // Doanh thu
+        case 'qldt':
+            $list_bill = loadall_bill();
+            include './doanhthu/list_dt.php';
+            break; 
+        case 'search_dt':
+            if (isset($_POST['search_from']) && isset($_POST['search_to'])) {
+                $from_date = $_POST['search_from'];
+                $to_date = $_POST['search_to'];
+                $list_bill = search_bill_by_date_range($from_date, $to_date);
+                include './doanhthu/list_dt.php';
+            }
+            break;
         default:
             include "./box_right.php";
             break;

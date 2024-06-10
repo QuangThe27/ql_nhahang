@@ -53,15 +53,20 @@
                                     $link = "index?act=dathang_sp&id=".$id;
                                     
                                     echo '<div class="col-3 pb-3">
-                                        <div class="card container__rgiht-card">
-                                            <a href="#">
-                                                <img class="card-img-top" src="'.$hinh.'"  onerror="this.onerror=null; this.src='.$hinh2.';">
-                                            </a>
-                                            <div class="card-body">
-                                                <h5 class="card-title">'.$tenSp.'</h5>
-                                                <p class="card-text">'.$giaTien.' VNĐ</p>
-                                                <a href="'.$link.'" class="btn btn-primary">Đặt hàng</a>
-                                            </div>
+                                    <div class="card container__rgiht-card">
+                                        <a href="#">
+                                            <img class="card-img-top" src="'.$hinh.'"  onerror="this.onerror=null; this.src='.$hinh2.';">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title">'.$tenSp.'</h5>
+                                            <p class="card-text">'.$giaTien.' VNĐ</p>';
+    
+                                            if ($soLuong > 0) {
+                                                echo '<a href="'.$link.'" class="btn btn-primary">Đặt hàng</a>';
+                                            } else {
+                                                echo '<p class="text-danger">Hết hàng</p>';
+                                            }
+                                    echo '  </div>
                                         </div>
                                     </div>';
                                 }

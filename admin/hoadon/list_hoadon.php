@@ -1,6 +1,12 @@
 <div class="col-10 admin-boxright" style="min-height: 100vh;">
                 <div class="admin-boxright-heading pt-3">
-
+                    <form class="container__left-headeing" action="index.php?act=search_hd" method="post">
+                        <label for="search" class="form-label">Tìm kiếm hóa đơn:</label>
+                        <div class="d-flex">
+                            <input class="form-control me-2" type="text" placeholder="Search" id="search" name="search" style="width: 140px;">
+                            <button class="btn" type="submit">Search</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="admin-boxright-body pt-4">
                     <table class="table">

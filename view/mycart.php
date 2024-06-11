@@ -72,10 +72,6 @@
                     </div>
                     <div class="p-2">
                         <label for="" class="form-label h6">Thanh toán: </label>
-                        <div class="input-group-text">
-                            <input type="radio" name="payment" value="online" style="margin-right: 12px;" required>
-                            Thanh toán online
-                        </div>
                         <div class="input-group-text mt-1">
                             <input type="radio" name="payment" value="cod" style="margin-right: 12px;" required>
                             Thanh toán khi nhận hàng

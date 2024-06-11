@@ -1,5 +1,24 @@
 <div class="container-full">
             <div class="ctn-donhang">
+                <!-- <?php
+                if (isset($_SESSION['qrcode'])) {
+                    echo '<div class="donhang_qrcoder p-2">
+                        <div class="card container__rgiht-card" style="width: 300px; margin: 0 auto;">
+                            <img class="card-img-top" src="' . $_SESSION['qrcode'] . '">
+                            <div class="card-body">
+                                <p class="card-text">Ngân hàng: MBBank</p>
+                                <p class="card-text">Số tài khoản: 86666270103</p>
+                                <p class="card-text">Chủ tài khoản: Nguyễn Thế Quang</p>
+                                <p class="card-text">Số tiền: ' . number_format($totalTien) . ' VND</p>
+                                <p class="card-text">Nội dung: ' . $_SESSION['qrcode_content'] . '</p>
+                            </div>
+                        </div>
+                    </div>';
+                    unset($_SESSION['qrcode']);
+                    unset($_SESSION['qrcode_content']);
+                }
+                ?> -->
+
                 <table class="table">
                     <thead class="table-success">
                         <tr>

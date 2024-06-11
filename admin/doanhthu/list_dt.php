@@ -14,11 +14,9 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 if(isset($_POST['export'])) {
-    // Khởi tạo một đối tượng Spreadsheet
     $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
     
-    // Đặt tên cho các cột
     $sheet->setCellValue('A1', 'Mã đơn');
     $sheet->setCellValue('B1', 'Mã user');
     $sheet->setCellValue('C1', 'Khách hàng');
@@ -28,7 +26,6 @@ if(isset($_POST['export'])) {
     $sheet->setCellValue('G1', 'Thời gian');
     $sheet->setCellValue('H1', 'Trạng thái');
 
-    // Lặp qua danh sách hóa đơn để điền thông tin vào file Excel
     $row = 2;
     foreach ($list_bill as $bill) {
         if ($bill['trangThai'] === 'Hoàn thành') {
@@ -44,7 +41,6 @@ if(isset($_POST['export'])) {
         }
     }
 
-    // Thêm thông tin tổng doanh thu
     $sheet->setCellValue('A'.$row, 'Tổng doanh thu:');
     $sheet->setCellValue('E'.$row, $tongTienHoaDon);
 
@@ -72,6 +68,8 @@ if(isset($_POST['export'])) {
                         <span><p class="h6" style="display: inline-block;">Tổng doanh thu:</p> <?php echo number_format($tongTienHoaDon); ?> VND</span>
                     </div>
                     <form action="" method="post">
+                        <input type="hidden" name="search_from" value="<?php echo isset($from_date) ? $from_date : ''; ?>">
+                        <input type="hidden" name="search_to" value="<?php echo isset($to_date) ? $to_date : ''; ?>">
                         <button type="submit" name="export">Export</button>
                     </form>
                 </div>
@@ -92,7 +90,6 @@ if(isset($_POST['export'])) {
                         </thead>
                         <tbody>
                             <?php
-                                $tongTienHoaDon = 0; 
                                 if (isset($list_bill) && count($list_bill) > 0) {
                                     foreach ($list_bill as $bill) {
                                         extract($bill);

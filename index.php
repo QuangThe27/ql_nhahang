@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "./model/pdo.php";
 require_once "./model/sanpham.php";
 require_once "./model/taikhoan.php";

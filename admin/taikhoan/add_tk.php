@@ -5,7 +5,7 @@
                 <div class="admin-boxright-body pt-4">
                     <form action="index.php?act=them_tk" method="post">
                         <div class="mb-3">
-                            <label class="form-label">Danh mục sản phẩm:</label>
+                            <label class="form-label">Danh mục tài khoản:</label>
                             <select class="form-select" name="id_dmtk" style="max-width: 200px;">
                                 <?php
                                     foreach ($list_dmtk as $dmtk) {

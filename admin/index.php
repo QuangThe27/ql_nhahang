@@ -1,4 +1,7 @@
 <?php
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 require_once "../model/pdo.php";
 require_once "../model/sanpham.php";
 require_once "../model/taikhoan.php";

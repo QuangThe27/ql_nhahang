@@ -16,7 +16,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="ten_dmsp" class="form-label">Trạng thái:</label>
-                            <input type="text" class="form-control" id="ten_dmsp" placeholder="Nhập tên danh mục" name="status" value="<?=$trangThai?>">
+                            <select class="form-select" id="type" name="status">
+                                <option value="0">Đang xử lý</option>
+                                <option value="1">Đang giao</option>
+                                <option value="2">Hoàn thành</option>
+                            </select>
                         </div>
 
                         <input type="hidden" name="id_dmsp" value="<?=$id?>">

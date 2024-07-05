@@ -38,6 +38,22 @@
                             $orders = getOrdersByUserId($userId);
                             foreach ($orders as $bill) {
                                 extract($bill);
+                                $status_text = '';
+
+                                switch ($trangThai) {
+                                    case 0:
+                                        $status_text = 'Đang xử lý';
+                                        break;
+                                    case 1:
+                                        $status_text = 'Đang giao';
+                                        break;
+                                    case 2:
+                                        $status_text = 'Hoàn thành';
+                                        break;
+                                    default:
+                                        $status_text = 'Không xác định';
+                                        break;
+                                }
 
                                 echo '<tr>
                                     <td style="width: 10%;">'.$id.'</td>
@@ -46,7 +62,7 @@
                                     <td style="width: 12%;">'.$totalTien.' VNĐ</td>
                                     <td style="width: 12%;">'.$ghiChu.'</td>
                                     <td style="width: 12%;">'.$timeNhan.'</td>
-                                    <td style="width: 12%;">'.$trangThai.'</td>
+                                    <td style="width: 12%;">'.$status_text.'</td>
                                     <td style="width: 12%;">
                                         <a class="button_a" href="index.php?act=chitiethoadon">
                                             <button type="button" class="btn btn-success">Chi tiết</button>

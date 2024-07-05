@@ -35,7 +35,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="#"><?=$hoTen?></a>
                                 </li>
-                                <?php if ($id == 1) {?>
+                                <?php if ($iddmTk == 1) {?>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="admin/index.php" target="_blank">Quản lý Website</a>
                                 </li>
@@ -47,7 +47,7 @@
                                     <a class="nav-link text-dark" href="index.php?act=donhang">Đơn hàng</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="index.php?act=caidat">Cài đặt</a>
+                                    <a class="nav-link text-dark" href="index.php?act=userInfo">Cài đặt thông tin</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="index.php?act=dangxuat">Đăng xuất</a>

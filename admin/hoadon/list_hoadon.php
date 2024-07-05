@@ -28,7 +28,23 @@
                                 foreach ($list_bill as $bill) {
                                     extract($bill);
                                     $sua = 'index.php?act=edit_bill&id='.$id;
-
+                                    $status_text = '';
+            
+                                    switch ($trangThai) {
+                                        case 0:
+                                            $status_text = 'Đang xử lý';
+                                            break;
+                                        case 1:
+                                            $status_text = 'Đang giao';
+                                            break;
+                                        case 2:
+                                            $status_text = 'Hoàn thành';
+                                            break;
+                                        default:
+                                            $status_text = 'Không xác định';
+                                            break;
+                                    }
+            
                                     echo '<tr>
                                         <td>'.$id.'</td>
                                         <td>'.$idtk.'</td>
@@ -37,7 +53,7 @@
                                         <td>'.$totalTien.' VNĐ</td>
                                         <td>'.$ghiChu.'</td>
                                         <td>'.$timeNhan.'</td>
-                                        <td>'.$trangThai.'</td>
+                                        <td>'.$status_text.'</td>
                                         <td>
                                             <a class="button_a" href="index.php?act=chitiethoadon">
                                                 <button type="button" class="btn btn-success">Chi tiết</button>
@@ -46,8 +62,7 @@
                                                 <button type="button" class="btn btn-success mt-2">Sửa</button>
                                             </a>
                                         </td>
-                                    </tr>
-                                    ';
+                                    </tr>';
                                 }
                             ?>
                         </tbody>

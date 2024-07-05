@@ -238,7 +238,45 @@ if (isset($_GET['act']) ? $_GET['act'] : '') {
             case 'donhang':
                 include './view/donhang.php';
                 break;
-            break;
+            // Thông tin
+            case 'userInfo':
+                include './view/userInfo.php';
+                break;
+            case 'user_info':
+                if (isset($_POST['capnhat'])) {
+                    $id_tk = $_SESSION['user']['id'];
+                    $matkhau_tk = $_POST['matkhau_tk'];
+                    $matkhau2_tk = $_POST['matkhau2_tk'];
+                    $email_tk = $_POST['email_tk'];
+                    $hoten_tk = $_POST['hoten_tk'];
+                    $sdt_tk = $_POST['sdt_tk'];
+                    $diachi_tk = $_POST['diachi_tk'];
+            
+                    // Kiểm tra mật khẩu nhập lại
+                    if ($matkhau_tk !== $matkhau2_tk) {
+                        $thongbao = "Mật khẩu nhập lại không khớp!";
+                    } elseif (check_email_capnhat($id_tk, $email_tk)) {
+                        $thongbao = "Email đã tồn tại!";
+                    } else {
+                        update_tk($id_tk, $matkhau2_tk, $email_tk, $hoten_tk, $sdt_tk, $diachi_tk, $_SESSION['user']['iddmTk']);
+                        // Cập nhật lại thông tin trong session
+                        $_SESSION['user']['email'] = $email_tk;
+                        $_SESSION['user']['hoTen'] = $hoten_tk;
+                        $_SESSION['user']['sdt'] = $sdt_tk;
+                        $_SESSION['user']['diaChi'] = $diachi_tk;
+
+                        header('Location: index.php');
+                    }
+
+                    echo '<script>
+                    setTimeout(function(){
+                        alert("'.$thongbao.'");
+                    }, 300);
+                    </script>';
+                }
+                include './view/userInfo.php';
+                break;
+
         default:
             include './view/body.php';
             break;

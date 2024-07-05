@@ -15,9 +15,9 @@ require("./PHPMailer-master/src/SMTP.php");
         $mail->Host = 'smtp.gmail.com'; // Thay bằng máy chủ SMTP của bạn
         $mail->Port = 465; // Thay bằng cổng SMTP của bạn
         $mail->isHTML(true);
-        $mail->Username = 'devtestcongviec@gmail.com'; 
-        $mail->Password = 'odkk ezoc gkxi dynk'; 
-        $mail->setFrom('devtestcongviec@gmail.com', 'The Quang');
+        $mail->Username = 'nguyenthequangdz10a1@gmail.com'; 
+        $mail->Password = 'dpjf nmtl zgdb leon'; 
+        $mail->setFrom('nguyenthequangdz10a1@gmail.com', 'The Quang');
         $mail->Subject = $subject;
         $mail->Body = $body;
         $mail->addAddress($to);
@@ -29,4 +29,5 @@ require("./PHPMailer-master/src/SMTP.php");
     }
 }
 // aowg mxjw qavv sapi: mật khẩu cho nguyenthequangdev
+//dpjf nmtl zgdb leon
 ?>

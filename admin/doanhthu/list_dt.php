@@ -3,7 +3,7 @@ $tongTienHoaDon = 0;
 
 if (isset($list_bill) && count($list_bill) > 0) {
     foreach ($list_bill as $bill) {
-        if ($bill['trangThai'] === 'Hoàn thành') {
+        if ($bill['trangThai'] === '2') {
             $tongTienHoaDon += $bill['totalTien'];
         }
     }
@@ -28,7 +28,7 @@ if(isset($_POST['export'])) {
 
     $row = 2;
     foreach ($list_bill as $bill) {
-        if ($bill['trangThai'] === 'Hoàn thành') {
+        if ($bill['trangThai'] === '2') {
             $sheet->setCellValue('A'.$row, $bill['id']);
             $sheet->setCellValue('B'.$row, $bill['idtk']);
             $sheet->setCellValue('C'.$row, $bill['hoTen'].', 0'.$bill['sdt']);
@@ -93,7 +93,24 @@ if(isset($_POST['export'])) {
                                 if (isset($list_bill) && count($list_bill) > 0) {
                                     foreach ($list_bill as $bill) {
                                         extract($bill);
-                                        if ($trangThai === 'Hoàn thành') {
+                                        if ($trangThai === '2') {
+                                            $status_text = '';
+            
+                                            switch ($trangThai) {
+                                                case 0:
+                                                    $status_text = 'Đang xử lý';
+                                                    break;
+                                                case 1:
+                                                    $status_text = 'Đang giao';
+                                                    break;
+                                                case 2:
+                                                    $status_text = 'Hoàn thành';
+                                                    break;
+                                                default:
+                                                    $status_text = 'Không xác định';
+                                                    break;
+                                            }
+
                                             echo '<tr>
                                                 <td>'.$id.'</td>
                                                 <td>'.$idtk.'</td>
@@ -102,7 +119,7 @@ if(isset($_POST['export'])) {
                                                 <td>'.$totalTien.' VNĐ</td>
                                                 <td>'.$ghiChu.'</td>
                                                 <td>'.$timeNhan.'</td>
-                                                <td>'.$trangThai.'</td>
+                                                <td>'.$status_text.'</td>
                                                 <td>
                                                     <a class="button_a" href="index.php?act=chitiethoadon">
                                                         <button type="button" class="btn btn-success">Chi tiết</button>
